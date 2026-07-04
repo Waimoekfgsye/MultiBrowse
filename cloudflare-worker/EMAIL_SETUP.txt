@@ -1,0 +1,28 @@
+MULTIBROWSE EMAIL SETUP
+======================
+
+Your auth worker is already configured to send from:
+  no-reply@waimoe.online
+
+IMPORTANT:
+Resend will only send email if this sender/domain is VERIFIED in your Resend account.
+
+You still need to do ONE manual step because API secrets should never be written into project files:
+
+1) Open terminal in: cloudflare-worker
+
+2) Run this command:
+   wrangler secret put RESEND_API_KEY --config wrangler.auth.toml
+
+3) Paste your Resend API key when Wrangler asks for it.
+
+4) Redeploy the auth worker:
+   wrangler deploy --config wrangler.auth.toml
+
+5) In Resend dashboard, verify waimoe.online (or at least no-reply@waimoe.online) as a sending identity.
+
+If FROM_EMAIL is not verified in Resend, signup/forgot-password emails will not be delivered.
+
+Current workers:
+- Auth worker: api-unrealvfx.unrealvfx.workers.dev
+- Sync worker: worker-setup-unrealvfx.unrealvfx.workers.dev

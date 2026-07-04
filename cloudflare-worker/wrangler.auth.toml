@@ -1,0 +1,18 @@
+name = "api-unrealvfx"
+main = "auth-worker.js"
+compatibility_date = "2024-01-01"
+workers_dev = true
+preview_urls = false
+
+[vars]
+FROM_EMAIL = "no-reply@waimoe.online"
+
+# Required secrets:
+#   wrangler secret put JWT_SECRET --config wrangler.auth.toml
+#   wrangler secret put RESEND_API_KEY --config wrangler.auth.toml
+# JWT_SECRET must match the sync worker's JWT_SECRET exactly.
+
+[[d1_databases]]
+binding = "DB"
+database_name = "multibrowse-db"
+database_id = "6e533d60-f232-4429-87e1-f163c1d0095f"

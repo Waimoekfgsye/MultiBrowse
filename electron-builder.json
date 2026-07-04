@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+  "appId": "com.multibrowse.app",
+  "productName": "MultiBrowse",
+  "directories": {
+    "output": "release",
+    "buildResources": "build"
+  },
+  "files": [
+    "dist/**/*",
+    "electron/**/*",
+    "public/icon.png"
+  ],
+  "extraResources": [
+    {
+      "from": "build/icon.ico",
+      "to": "icon.ico"
+    },
+    {
+      "from": "public/icon.png",
+      "to": "icon.png"
+    }
+  ],
+  "win": {
+    "target": [
+      {
+        "target": "portable",
+        "arch": ["x64"]
+      }
+    ],
+    "icon": "build/icon.ico",
+    "artifactName": "${productName}-${version}.${ext}"
+  },
+  "portable": {
+    "artifactName": "${productName}-Portable.${ext}"
+  }
+}
